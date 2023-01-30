@@ -3,7 +3,9 @@ FROM maven:3.5.0-jdk-8-alpine AS builder
 ADD ./pom.xml pom.xml
 ADD ./src src/
 
-RUN mvn clean package
+RUN mvn clean 
+RUN mvn test
+RUN mvn package
 
 From openjdk:8-jre-alpine
 
