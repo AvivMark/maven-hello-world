@@ -22,10 +22,11 @@ jobs:
    
     
     - name: bump project version
-      run: python3 my-app/bumpver.py my-app/pom.xml >> $VERSION_ENV
-      
+      run: |
+        VERSION=$(python3 my-app/bumpver.py my-app/pom.xml)
+        echo $VERSION >> $GITHUB_ENV
     - name: Test Version env
-      run: echo ${{ VERSION_ENV }}
+      run: echo ${{ env.VERSION }}
     
     - name: build and upload docker image
       uses: zenato/docker-action@v1.0.0
@@ -33,6 +34,6 @@ jobs:
          username: ${{ secrets.DOCKERHUB_USERNAME }}
          password: ${{ secrets.DOCKERHUB_PASSWORD }}
          repository: aviv27400/maven-hello-world
-         tag: my-app:$VERSION
+         tag: "{{ env.VERSION }}"
       
 
