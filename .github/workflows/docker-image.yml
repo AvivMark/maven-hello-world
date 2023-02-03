@@ -23,7 +23,7 @@ jobs:
       run: ls -lah
     
     - name: bump project version
-      run: VERSION=$(python3 my-app/bumpver.py)
+      run: VERSION=$(python3 my-app/bumpver.py my-app/pom.xml)
     
     - uses: actions/checkout@v3
     - name: Build the Docker image
