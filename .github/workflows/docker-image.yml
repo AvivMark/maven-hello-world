@@ -33,7 +33,7 @@ jobs:
       
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
-    
+
     - name: Docker Login
       uses: docker/login-action@v2.1.0
       with: 
@@ -44,7 +44,7 @@ jobs:
       uses: docker/build-push-action@v4.0.0
       with:
         build-args: VERSION=${{ env.VERSION }}
-        tags: aviv27400/${{ env.VERSION }}, lastest
+        tags: aviv27400/maven-hello-world/${{ env.VERSION }}, aviv27400/maven-hello-world/lastest
         file: my-app/Dockerfile
         context: my-app/.
         push: true
