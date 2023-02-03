@@ -18,14 +18,17 @@ jobs:
       uses: actions/setup-python@v4.5.0
       with:
        python-version: '3.10'
-       
-    - name: get location and files
-      run: ls -lah
+   
     
     - name: bump project version
       run: export VERSION=$(python3 my-app/bumpver.py my-app/pom.xml)
     
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build -f my-app/Dockerfile -t my-app:$VERSION --build-arg VERSION=$VERSION .
+    - name: build and upload docker image
+      uses: zenato/docker-action@v1.0.0
+      with:
+         username: ${{ secrets.DOCKERHUB_USERNAME }}
+         password: ${{ secrets.DOCKERHUB_PASSWORD }}
+         repository: aviv27400/maven-hello-world
+         tag: my-app:$VERSION
+      
 
