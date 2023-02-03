@@ -22,7 +22,10 @@ jobs:
    
     
     - name: bump project version
-      run: export VERSION=$(python3 my-app/bumpver.py my-app/pom.xml)
+      run: VERSION=$(python3 my-app/bumpver.py my-app/pom.xml) >> $VERSION_ENV
+      
+    - name: Test Version env
+      run: echo ${{ VERSION_ENV }}
     
     - name: build and upload docker image
       uses: zenato/docker-action@v1.0.0
