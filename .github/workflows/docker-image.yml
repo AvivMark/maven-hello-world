@@ -44,7 +44,7 @@ jobs:
       uses: docker/build-push-action@v4.0.0
       with:
         build-args: VERSION=${{ env.VERSION }}
-        tags: aviv27400/maven-hello-world:${{ env.VERSION }}, aviv27400/maven-hello-world:lastest
+        tags: aviv27400/maven-hello-world:${{ env.VERSION }}, aviv27400/maven-hello-world:latest
         file: my-app/Dockerfile
         context: my-app/.
         push: true
