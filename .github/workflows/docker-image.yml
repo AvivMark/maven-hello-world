@@ -19,9 +19,9 @@ jobs:
        python-version: '3.10'
     
     - name: bump project version
-      run: VERSION=$(python3 bumpver.py)
+      run: VERSION=$(python3 my-app/bumpver.py)
     
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build -t my-app:$VERSION --build-arg VERSION=$VERSION .
+      run: docker build -f my-app/Dockerfile -t my-app:$VERSION --build-arg VERSION=$VERSION .
 
