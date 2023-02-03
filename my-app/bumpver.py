@@ -1,7 +1,11 @@
 import xml.etree.ElementTree as ET
 import sys
+import os
 
-pomFileTree = ET.parse('pom.xml')
+pomPath=sys.argv[1] 
+
+
+pomFileTree = ET.parse(pomPath)
 ET.register_namespace("","http://maven.apache.org/POM/4.0.0")
 
 def getVer():
