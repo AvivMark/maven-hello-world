@@ -22,7 +22,7 @@ def setVer(version):
     for child in root:
         if "version" in child.tag:
             child.text = version
-    pomFileTree.write("pom.xml")
+    pomFileTree.write(pomPath)
 
 def bumpPatch(version):
     versionSplit = version.split('.')
